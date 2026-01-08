@@ -1,0 +1,60 @@
+{
+  "date": "2026-01-08",
+  "tokens": {
+    "colors": {
+      "primary": "#3B82F6",
+      "secondary": "#10B981",
+      "background": "#FFFFFF",
+      "text": "#111827"
+    },
+    "spacing": {
+      "sm": "0.5rem",
+      "md": "1rem",
+      "lg": "2rem"
+    },
+    "typography": {
+      "base": "16px",
+      "heading": "24px"
+    }
+  },
+  "components": [
+    {
+      "name": "Button",
+      "props": [
+        "label",
+        "onClick",
+        "disabled"
+      ],
+      "variants": [
+        "primary",
+        "secondary",
+        "outline"
+      ]
+    },
+    {
+      "name": "Input",
+      "props": [
+        "value",
+        "onChange",
+        "placeholder",
+        "type"
+      ],
+      "variants": [
+        "default",
+        "filled"
+      ]
+    },
+    {
+      "name": "Card",
+      "props": [
+        "title",
+        "content",
+        "footer"
+      ],
+      "variants": [
+        "elevated",
+        "flat"
+      ]
+    }
+  ]
+}
