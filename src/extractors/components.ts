@@ -1,27 +1,54 @@
 export interface ComponentMeta {
   name: string;
-  props: string[];
+  category: "Base" | "Layout" | "Feedback" | "Navigation" | "Data";
+  description: string;
+  props: { name: string; type: string; required: boolean }[];
   variants: string[];
 }
 
 export const extractComponents = (): ComponentMeta[] => {
-  // In a real project, this would use AST parsing for React/Vue components.
-  // For demonstration, we return mock component metadata.
   return [
     {
       name: "Button",
-      props: ["label", "onClick", "disabled"],
-      variants: ["primary", "secondary", "outline"],
+      category: "Base",
+      description: "Standard clickable button for actions.",
+      props: [
+        { name: "label", type: "string", required: true },
+        { name: "onClick", type: "function", required: false },
+        { name: "loading", type: "boolean", required: false },
+      ],
+      variants: ["primary", "secondary", "ghost", "danger"],
     },
     {
-      name: "Input",
-      props: ["value", "onChange", "placeholder", "type"],
-      variants: ["default", "filled"],
+      name: "Modal",
+      category: "Feedback",
+      description: "Dialog window that overlays the main content.",
+      props: [
+        { name: "isOpen", type: "boolean", required: true },
+        { name: "onClose", type: "function", required: true },
+        { name: "title", type: "string", required: false },
+      ],
+      variants: ["centered", "fullscreen"],
     },
     {
-      name: "Card",
-      props: ["title", "content", "footer"],
-      variants: ["elevated", "flat"],
+      name: "Badge",
+      category: "Data",
+      description: "Small visual indicator for status or counts.",
+      props: [
+        { name: "count", type: "number", required: false },
+        { name: "color", type: "string", required: false },
+      ],
+      variants: ["dot", "rounded", "pill"],
+    },
+    {
+      name: "Navbar",
+      category: "Navigation",
+      description: "Main navigation header for the application.",
+      props: [
+        { name: "logo", type: "string", required: false },
+        { name: "links", type: "array", required: true },
+      ],
+      variants: ["sticky", "fixed"],
     },
   ];
 };
